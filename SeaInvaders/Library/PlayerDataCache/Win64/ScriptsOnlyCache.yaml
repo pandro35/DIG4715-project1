@@ -15,8 +15,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -1050,4 +1052,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level2.unity
   - Assets/Scenes/GameOver.unity
   - Assets/Scenes/WinScreen.unity
-  playerPath: C:/Users/Alejandro/Documents/GitHub/DIG4715-project1/SeaInvaders/Builds/SeaInvaders.exe
+  playerPath: C:/Users/Alejandro/Documents/GitHub/DIG4715-project1/SeaInvaders/Builds4/SeaInvaders.exe
