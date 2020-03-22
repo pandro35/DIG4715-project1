@@ -9,7 +9,6 @@ public class DestroyOnContact : MonoBehaviour
     private PlayerController player;
     public int scoreValue;
     private int damage;
-    public GameObject explosion;
     private AudioSource expAudio;
 
     // Start is called before the first frame update
@@ -33,15 +32,11 @@ public class DestroyOnContact : MonoBehaviour
             return;
         }
 
-        /*if (explosion != null)
-        {
-            Instantiate(explosion, transform.position, transform.rotation);
-            expAudio.Play();
-        }*/
-
         else if(other.CompareTag("Player"))
         {
             gameControl.UpdateLives(damage);
+            expAudio.Play();
+            player.PlayerHit();
             Destroy(gameObject);
         }
 
@@ -54,6 +49,7 @@ public class DestroyOnContact : MonoBehaviour
             else
             {
                 Destroy(other.gameObject);
+                expAudio.Play();
                 Destroy(gameObject);
             }
         }
@@ -61,8 +57,17 @@ public class DestroyOnContact : MonoBehaviour
         else
         {
             gameControl.AddScore(scoreValue);
+            expAudio.Play();
             Destroy(gameObject);
             Destroy(other.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Boundary"))
+        {
+            Destroy(gameObject);
         }
     }
 }

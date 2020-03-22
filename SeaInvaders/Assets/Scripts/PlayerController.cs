@@ -11,6 +11,7 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb2d;
+    private SpriteRenderer colorChange;
     public float speed;
     public Boundary boundary;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         expAudio = GetComponent<AudioSource>();
+        colorChange = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -49,5 +51,22 @@ public class PlayerController : MonoBehaviour
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
             expAudio.Play();
         }
+    }
+
+    public void PlayerHit()
+    {
+        StartCoroutine(ChangeColor());
+    }
+
+    private IEnumerator ChangeColor()
+    {
+        colorChange.color = Color.red;
+        yield return new WaitForSecondsRealtime(0.1f);
+        colorChange.color = Color.white;
+        yield return new WaitForSecondsRealtime(0.1f);
+        colorChange.color = Color.red;
+        yield return new WaitForSecondsRealtime(0.1f);
+        colorChange.color = Color.white;
+
     }
 }

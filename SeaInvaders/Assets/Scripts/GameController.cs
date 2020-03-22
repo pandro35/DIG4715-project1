@@ -6,27 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public int Lives;
-    public int Score;
+    public static int Lives = 3;
+    public static int Score = 0;
+    public static int HighScore = 0;
 
     public Text ScoreText;
     public Text LivesText;
+    public Text HighScoreText;
 
     public GameObject bonusShip;
     public float spawnRate;
 
-    public GameObject Canvas;
-    public AudioSource BGM;
-    public GameObject MainCamera;
-
     // Start is called before the first frame update
     void Start()
     {
-
-        Lives = 3;
-        Score = 0;
         LivesText.text = "Lives: " + Lives;
         ScoreText.text = "Score: " + Score;
+        HighScoreText.text = "High Score: " + HighScore;
     }
 
     // Update is called once per frame
@@ -39,9 +35,7 @@ public class GameController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.M))
         {
-            Destroy(Canvas);
             SceneManager.LoadScene(0);
-            Destroy(gameObject);
         }
 
         if (Random.value > spawnRate)
@@ -51,11 +45,6 @@ public class GameController : MonoBehaviour
             Instantiate(bonusShip, spawnPosition, spawnRotation);
         }
 
-        DontDestroyOnLoad(gameObject);
-        if (SceneManager.GetActiveScene().buildIndex == 4)
-        {
-            Destroy(gameObject);
-        }
     }
 
     public void UpdateLives(int newLivesValue)
@@ -67,10 +56,12 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Destroy(Canvas);
-            Destroy(MainCamera);
+            if(HighScore < Score)
+            {
+                HighScore = Score;
+            }
+            Lives = 3;
             SceneManager.LoadScene(3);
-            Destroy(gameObject);
         }
     }
     public void AddScore(int newScoreValue)

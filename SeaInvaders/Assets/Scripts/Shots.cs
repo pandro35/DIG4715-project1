@@ -13,4 +13,12 @@ public class Shots : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = -transform.right * speed;
     }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Boundary"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

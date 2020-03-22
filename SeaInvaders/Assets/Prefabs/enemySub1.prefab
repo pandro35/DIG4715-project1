@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8434072622692015391}
   - component: {fileID: 8434072622692015389}
   - component: {fileID: 191568211332540223}
-  - component: {fileID: -2308364026200015057}
+  - component: {fileID: 3352746096528233187}
   m_Layer: 0
   m_Name: enemySub1
   m_TagString: Enemy
@@ -117,8 +117,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
-  explosion: {fileID: 1542695603426289218, guid: febd1642d1cbf354e843b43ae894f8ac,
-    type: 3}
 --- !u!61 &191568211332540223
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,7 +143,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.24, y: 2.24}
   m_EdgeRadius: 0
---- !u!82 &-2308364026200015057
+--- !u!82 &3352746096528233187
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,7 +154,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2ef104138aee3a34a83550e8fea581c0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

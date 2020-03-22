@@ -13,10 +13,6 @@ public class EnemyController : MonoBehaviour
     public GameObject shot;
     public float fireRate;
 
-    public GameObject canvas;
-    public GameObject gameController;
-    public GameObject MainCamera;
-
     private AudioSource expAudio;
     
 
@@ -37,7 +33,7 @@ public class EnemyController : MonoBehaviour
 
         foreach (Transform enemy in enemyHolder)
         {
-            if(enemy.position.y < -6.2 || enemy.position.y > 5.0)
+            if(enemy.position.y < -5.2 || enemy.position.y > 4.5)
             {
                 speed = -speed;
                 enemyHolder.position += Vector3.right * 0.2f;
@@ -50,6 +46,11 @@ public class EnemyController : MonoBehaviour
             }
             if(enemy.position.x >= 8)
             {
+                if(GameController.HighScore < GameController.Score)
+                {
+                    GameController.HighScore = GameController.Score;
+                }
+                GameController.Lives = 3;
                 SceneManager.LoadScene(3);
             }
         }
@@ -64,9 +65,11 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                Destroy(canvas);
-                Destroy(MainCamera);
-                Destroy(gameController);
+                if (GameController.HighScore < GameController.Score)
+                {
+                    GameController.HighScore = GameController.Score;
+                }
+                GameController.Lives = 3;
                 SceneManager.LoadScene(4);
             }
         }
@@ -84,21 +87,4 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    /*IEnumerator LoadYourAsyncScene()
-    {
-
-        Destroy(Defense);
-        Time.timeScale = 0.0f;
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(2);
-        Debug.Log("Scene created");
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-        SceneManager.MergeScenes(SceneManager.GetSceneByBuildIndex(1), SceneManager.GetSceneByBuildIndex(2));
-        Debug.Log("Another Scene");
-        Time.timeScale = 1.0f;
-        Destroy(gameObject);
-
-    }*/
 }
